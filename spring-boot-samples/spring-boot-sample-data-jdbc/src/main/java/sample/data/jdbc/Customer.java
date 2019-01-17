@@ -16,9 +16,10 @@
 
 package sample.data.jdbc;
 
+import org.springframework.data.annotation.Id;
+
 import java.time.LocalDate;
 
-import org.springframework.data.annotation.Id;
 
 class Customer {
 
@@ -28,6 +29,8 @@ class Customer {
 	private String firstName;
 
 	private LocalDate dateOfBirth;
+
+	private String address;
 
 	public Long getId() {
 		return this.id;
@@ -52,5 +55,9 @@ class Customer {
 	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
+	public String getAddress(){ return this.address; }
+
+	public void setAddress(String address){ this.address = address; }
 
 }

@@ -24,7 +24,10 @@ import org.springframework.data.repository.query.Param;
 
 interface CustomerRepository extends CrudRepository<Customer, Long> {
 
-	@Query("select id, first_name, date_of_birth from customer where upper(first_name) like '%' || upper(:name) || '%' ")
+	@Query("select id, first_name, date_of_birth, address from customer where upper(first_name) like '%' || upper(:name) || '%' ")
 	List<Customer> findByName(@Param("name") String name);
+
+	@Query("select id, first_name, date_of_birth, address from customer where upper(address) like '%' || upper(:address) || '%' ")
+	List<Customer> findByAddress(@Param("address") String address);
 
 }

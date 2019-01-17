@@ -17,6 +17,7 @@
 package sample.data.jdbc;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,5 +40,21 @@ public class SampleController {
 	public List<Customer> customers(@RequestParam String name) {
 		return this.customerRepository.findByName(name);
 	}
+
+	@GetMapping("/id")
+	@ResponseBody
+	@Transactional(readOnly = true)
+	public Optional<Customer> customerById(@RequestParam Long id) {
+		return this.customerRepository.findById(id);
+	}
+
+	@GetMapping("/place")
+	@ResponseBody
+	@Transactional(readOnly = true)
+	public List<Customer> customerByAddress(@RequestParam String address) {
+		return this.customerRepository.findByAddress(address);
+	}
+
+
 
 }
